@@ -1,0 +1,68 @@
+<section class="bg-[#E40046] w-[250px] h-screen py-8 px-4 flex flex-col fixed left-0 top-0">
+    <!-- Logo Simplon -->
+    <div class="mb-10">
+        <img class="w-[180px] block mx-auto" src="assets/images/simplon-logo.png" alt="Logo Simplon">
+    </div>
+    
+    <!-- Profil utilisateur -->
+    <div class="flex items-center mb-10 px-4 user-profile">
+        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-3">
+            <i class="fas fa-user text-[#E40046]"></i>
+        </div>
+        <div>
+            <p class="text-white text-sm font-medium">{{ userInfo.name }}</p>
+            <p class="text-white text-xs opacity-70">{{ userInfo.role }}</p>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="flex-1 overflow-y-auto">
+        <!-- Section Onboarding -->
+        <div class="mb-6">
+            <h3 class="text-white text-xs font-semibold uppercase tracking-wider px-4 mb-2 opacity-70">Onboarding</h3>
+            <ul class="space-y-1">
+                <li *ngFor="let item of getItemsBySection('Onboarding')">
+                    <a [routerLink]="item.path" routerLinkActive="active-link" class="flex items-center text-white py-2 px-4 rounded-md transition-colors duration-200 hover:bg-white hover:bg-opacity-20">
+                        <i [class]="item.icon + ' mr-3 w-5 text-center'"></i>
+                        <span>{{ item.label }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Section Community -->
+        <div class="mb-6">
+            <h3 class="text-white text-xs font-semibold uppercase tracking-wider px-4 mb-2 opacity-70">Community</h3>
+            <ul class="space-y-1">
+                <li *ngFor="let item of getItemsBySection('Community')">
+                    <a [routerLink]="item.path" routerLinkActive="active-link" class="flex items-center text-white py-2 px-4 rounded-md transition-colors duration-200 hover:bg-white hover:bg-opacity-20">
+                        <i [class]="item.icon + ' mr-3 w-5 text-center'"></i>
+                        <span>{{ item.label }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section Feedback -->
+        <div>
+            <h3 class="text-white text-xs font-semibold uppercase tracking-wider px-4 mb-2 opacity-70">Feedback</h3>
+            <ul class="space-y-1">
+                <li *ngFor="let item of getItemsBySection('Feedback')">
+                    <a [routerLink]="item.path" routerLinkActive="active-link" class="flex items-center text-white py-2 px-4 rounded-md transition-colors duration-200 hover:bg-white hover:bg-opacity-20">
+                        <i [class]="item.icon + ' mr-3 w-5 text-center'"></i>
+                        <span>{{ item.label }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Pied de page -->
+    <div class="mt-auto pt-6 pb-4 px-4">
+        <a href="javascript:void(0)" (click)="logout()" class="flex items-center text-white opacity-70 hover:opacity-100 transition-opacity duration-200">
+            <i class="fas fa-sign-out-alt mr-3"></i>
+            <span>Déconnexion</span>
+        </a>
+        <p class="text-white text-xs opacity-50 mt-4">© {{ currentYear }} Simplon.co</p>
+    </div>
+</section>
