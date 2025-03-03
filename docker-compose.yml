@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: discord-bot-frontend
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "4200:4200"
+    restart: unless-stopped
+    volumes:
+      - ./src:/app/src
+    networks:
+      - app-network
+
+# Configuration réseau
+networks:
+  app-network:
+    driver: bridge 
